@@ -1,12 +1,26 @@
 import React, { PropTypes } from 'react';
 
 // Importamos los componentes
-
+import Header from '../../components/Header';
+import SearchForm from '../../components/SearchForm';
+import RepositoryList from '../../components/RepositoryList';
 
 /**
  * Muestra un buscador, así como la lista de resultados.
  */
 class SearchContainer extends React.Component {
+  constructor(props) {
+    super(props);
+    // Binds
+    this.onSubmit = this.onSubmit.bind(this);
+
+    this.state = {
+      loading: false,
+      results: [],
+      search: '',
+      queried: false
+    }
+  }
   /**
    * Datos falsos. Los utilizamos en desarrollo hasta que leamos los datos de
    * la API.
@@ -37,11 +51,29 @@ class SearchContainer extends React.Component {
   }
 
   /**
+   * Captura el evento de buscar y actualiza el estado
+   */
+  onSubmit(value) {
+    // simulamos una llamada a la API
+    this.setState({ loading : true });
+
+    console.log('submit: ' + value);
+
+    setTimeout( () => {
+      this.setState( { search : value, loading : false, queried : true, results: this.stubData() } )
+    }, 2000);
+  }
+
+
+
+  /**
    * Render the SearchContainer component
    */
   render() {
     return <main className="container">
-      <h1>Búsqueda</h1>
+      <Header />
+      <SearchForm onSubmit={ this.onSubmit } search={ this.state.search } />
+      <RepositoryList data={ this.state.results } loading={this.state.loading } queried={ this.state.queried } search={ this.state.search } />
     </main>
   }
 }

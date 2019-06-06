@@ -3,6 +3,7 @@ import React, { PropTypes } from 'react';
 // Componentes
 import HintMessage from '../HintMessage';
 import ReleaseRow from '../ReleaseRow';
+import Paginator from '../Paginator';
 
 /**
  * Muestra la lista de Releases
@@ -66,4 +67,4 @@ class ReleaseList extends React.PureComponent {
 }
 
 // Export the class
-export default ReleaseList;
+export default Paginator(ReleaseList);
