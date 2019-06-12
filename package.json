@@ -12,6 +12,10 @@
     "react-scripts": "0.8.3"
   },
   "dependencies": {
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.14.0",
+    "jest": "^24.8.0",
+    "jest-enzyme": "^7.0.2",
     "react": "^15.4.1",
     "react-dom": "^15.4.1",
     "react-icons": "^2.2.1",
